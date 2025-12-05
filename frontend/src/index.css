@@ -2,21 +2,21 @@
 
 :root {
   /* Couleurs de fond */
-  --couleur-fond: #0f172a;
+  --couleur-fond: #2e1065;
   --couleur-texte: #e2e8f0;
 
   /* Couleurs principales */
-  --couleur-primaire: #8b5cf6;
-  --couleur-secondaire: #6366f1;
-  --couleur-accent: #ec4899;
+  --couleur-primaire: #daa520;
+  --couleur-secondaire: #b8860b;
+  --couleur-accent: #9333ea;
 
   /* Effets glassmorphism */
-  --fond-verre: rgba(30, 41, 59, 0.7);
+  --fond-verre: rgba(15, 23, 42, 0.6);
   --bordure-verre: rgba(255, 255, 255, 0.1);
 
   /* Messages */
-  --fond-message-utilisateur: #3b82f6;
-  --fond-message-bot: #334155;
+  --fond-message-utilisateur: #daa520;
+  --fond-message-bot: #4b5563;
 }
 
 body {
@@ -47,10 +47,10 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: rgba(255, 255, 255, 0.3);
 }

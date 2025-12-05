@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Contunie from './App';
 import rapporterVitauxWeb from './reportWebVitals';
 
 const racine = ReactDOM.createRoot(document.getElementById('root'));
 racine.render(
   <React.StrictMode>
-    <App />
+    <Contunie />
   </React.StrictMode>
 );
 

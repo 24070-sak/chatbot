@@ -1,26 +1,26 @@
 """
-Django settings for core project.
+Paramètres Django pour le projet core.
 """
 
 from pathlib import Path
 import os
 import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Construisez des chemins à l'intérieur du projet comme ceci : BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# Paramètres de développement rapide - inadaptés à la production
+# Voir https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# AVERTISSEMENT DE SÉCURITÉ : gardez secrète la clé secrète utilisée en production !
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-6iz$ug04rib&aj)@-p46q9w-j%6oc-l3em1e7^$u8v#0etn9l@')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# AVERTISSEMENT DE SÉCURITÉ : ne pas exécuter avec le mode debug activé en production !
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,.onrender.com').split(',')
 
-# Application definition
+# Définition de l'application
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,7 +65,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# Database
+# Base de données
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
@@ -75,7 +75,7 @@ DATABASES = {
     )
 }
 
-# Password validation
+# Validation du mot de passe
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -93,7 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# Internationalisation
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
 LANGUAGE_CODE = 'fr-fr'
@@ -104,14 +104,14 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Fichiers statiques (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# CORS Settings
+# Paramètres CORS
 CORS_ALLOW_ALL_ORIGINS = DEBUG  # Only allow all in debug mode
 
 if not DEBUG:

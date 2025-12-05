@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, User, Loader2 } from 'lucide-react';
+import { Send, Bot, User, Loader2, Sun, Moon } from 'lucide-react';
+import logo from './assets/pixel_craft_logo.png';
 import './App.css';
 
 const URL_API = process.env.REACT_APP_API_URL || 'http://localhost:8001/api/chat/message/';
@@ -12,6 +13,7 @@ function App() {
   ]);
   const [texteEntree, setTexteEntree] = useState('');
   const [estEnChargement, setEstEnChargement] = useState(false);
+  const [theme, setTheme] = useState('dark');
   const refFinMessages = useRef(null);
 
   const faireDefilerVersBas = () => {
@@ -21,6 +23,10 @@ function App() {
   useEffect(() => {
     faireDefilerVersBas();
   }, [messages]);
+
+  const basculerTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const envoyerMessage = async (e) => {
     e.preventDefault();
@@ -33,7 +39,7 @@ function App() {
 
     try {
       const reponse = await axios.post(URL_API, { message: messageUtilisateur });
-      setMessages(precedent => [...precedent, { texte: reponse.data.response, expediteur: 'bot' }]);
+      setMessages(precedent => [...precedent, { texte: reponse.data.reponse, expediteur: 'bot' }]);
     } catch (erreur) {
       console.error("Erreur lors de l'envoi du message:", erreur);
       setMessages(precedent => [...precedent, { texte: "Ah bah bravo, j'ai planté. C'est sûrement de ta faute.", expediteur: 'bot' }]);
@@ -43,7 +49,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container" data-theme={theme}>
       <div className="background-gradient"></div>
 
       <motion.div
@@ -53,13 +59,19 @@ function App() {
         className="chat-window"
       >
         <div className="chat-header">
-          <div className="header-icon">
-            <Bot size={24} color="#fff" />
+          <div className="header-left">
+            <div className="header-icon">
+              <img src={logo} alt="Pixel Craft Logo" className="logo-image" />
+            </div>
+            <div>
+              <h1>Coulouche-Bot</h1>
+              <span className="status">Le Sage du Dimanche</span>
+            </div>
           </div>
-          <div>
-            <h1>Coulouche-Bot</h1>
-            <span className="status">Le Sage du Dimanche</span>
-          </div>
+
+          <button onClick={basculerTheme} className="theme-toggle" aria-label="Changer le thème">
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
         </div>
 
         <div className="messages-container">
